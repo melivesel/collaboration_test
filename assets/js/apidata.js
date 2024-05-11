@@ -14,7 +14,7 @@ function getDomain()
 function getEndpoint(path)
 {
     const baseUrl = getDomain();
-    fetch("./assets/js/vendorapis.json")
+    fetch("/vendorapis.json")
         .then(function (data) {
             const publicKey = data.marvel.publicKey;
             const privateKey = data.marvel.privateKey;
@@ -34,3 +34,4 @@ function test()
         console.log(results);
     });
 }
+test();
