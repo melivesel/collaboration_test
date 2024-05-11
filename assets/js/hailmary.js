@@ -11,20 +11,24 @@ fetch("https://gateway.marvel.com:443/v1/public/characters?name=Iron%20Man&apike
             })
             .then(function(data) {
                 const comics = data.data.results;
-
                 const searchResultDiv = document.getElementById('comicsuggestion');
                 searchResultDiv.innerHTML = ''; // Clear existing content
 
                 comics.forEach(function(comic) {
                     const comicTitle = comic.title;
                     const comicTitleElement = document.createElement('h2');
-                    const comicDescription =comic.description;
+                    const comicDescription = comic.description;
                     const comicDescriptionElement = document.createElement('p');
                     comicTitleElement.textContent = comicTitle;
                     searchResultDiv.appendChild(comicTitleElement);
-                    comicDescriptionElement.textContent = comicDescription;
+
+                    if (comicDescription) {
+                        comicDescriptionElement.textContent = comicDescription;
+                    } else {
+                        comicDescriptionElement.textContent = "No description available";
+                    }
+
                     searchResultDiv.appendChild(comicDescriptionElement);
-                
                 });
             })
             .catch(function(error) {
