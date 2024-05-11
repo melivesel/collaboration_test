@@ -1,9 +1,10 @@
-function getRequestedData(request)
+async function getRequestedData(request)
 {
     /**
      * means the same: fetch(request).then( function(response) { return response.json()} );
      */
-    return fetch(request).then(response => response.json());
+    const response = await fetch(request);
+    return await response.json();
 };
 
 function getDomain() 
