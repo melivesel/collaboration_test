@@ -1,5 +1,5 @@
 const appendImageUrlToDiv = function(character) {
-    fetch('/assets/js/vendorapis.json')
+    fetch('./vendorapis.json')
         .then(function(response) {
             return response.json();
         })
@@ -57,7 +57,7 @@ fetch(url)
     })
 };
 function getServices() {
-    fetch("./assests/js/vendorapis.json")
+    fetch("./vendorapis.json")
         .then(function (data) {
             const publicKey = data.marvel.publicKey;
             const privateKey = data.marvel.privateKey;
