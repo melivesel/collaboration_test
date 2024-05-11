@@ -1,5 +1,5 @@
 const appendImageUrlToDiv = function(character) {
-    const apiKey = 'IeRo8C6Ohj2ZFVaLuyBHDqJ5VMCSxDiv&q';
+    const apiKey = 'IeRo8C6Ohj2ZFVaLuyBHDqJ5VMCSxDiv';
     const apiUrlGif = `https://api.giphy.com/v1/gifs/search?api_key=${apiKey}&q=${character}&channel=@marvel&limit=25&offset=0&rating=g&lang=en`;
 
     fetch(apiUrlGif, { cache: 'reload' })
