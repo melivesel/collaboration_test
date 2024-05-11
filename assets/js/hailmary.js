@@ -3,22 +3,29 @@ fetch("https://gateway.marvel.com:443/v1/public/characters?name=Iron%20Man&apike
         return response.json();
     })
     .then(function(data) {
-        console.log(data);
-        const characterid = data.data.results[0].id;
-        fetch('https://gateway.marvel.com:443/v1/public/characters/' + characterid + '/comics?limit=25&apikey=f99ff0ebd9b29727ddc4d22f632170a4')
+        const characterId = data.data.results[0].id;
+
+        fetch(`https://gateway.marvel.com:443/v1/public/characters/${characterId}/comics?limit=5&apikey=f99ff0ebd9b29727ddc4d22f632170a4`)
             .then(function(response) {
                 return response.json();
             })
             .then(function(data) {
-                console.log(data);
-                const issueName = data.data.results[0].title;
-                console.log(issueName);
-                const comicTitleElement = document.createElement('h2');
-                comicTitleElement.textContent = issueName; // Set the text content, not the src attribute
+                const comics = data.data.results;
+
                 const searchResultDiv = document.getElementById('comicsuggestion');
                 searchResultDiv.innerHTML = ''; // Clear existing content
-                searchResultDiv.appendChild(comicTitleElement);
 
+                comics.forEach(function(comic) {
+                    const comicTitle = comic.title;
+                    const comicTitleElement = document.createElement('h2');
+                    const comicDescription =comic.description;
+                    const comicDescriptionElement = document.createElement('p');
+                    comicTitleElement.textContent = comicTitle;
+                    searchResultDiv.appendChild(comicTitleElement);
+                    comicDescription.textContent = comicDescription;
+                    searchResultDiv.appendChild(comicDescriptionElement);
+                
+                });
             })
             .catch(function(error) {
                 console.log("Error fetching data:", error);
