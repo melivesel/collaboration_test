@@ -11,6 +11,9 @@ fetch("https://gateway.marvel.com:443/v1/public/characters?name=Iron%20Man&apike
             })
             .then(function(data) {
                 console.log(data);
+                const issueName = data.data.results[0].title;
+                console.log(issueName);
+
             })
             .catch(function(error) {
                 console.log("Error fetching data:", error);
