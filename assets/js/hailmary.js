@@ -12,7 +12,8 @@ fetch("https://gateway.marvel.com:443/v1/public/characters?name=Iron%20Man&apike
             .then(function(data) {
                 const comics = data.data.results;
                 const searchResultDiv = document.getElementById('comicsuggestion');
-                searchResultDiv.innerHTML = ''; // Clear existing content
+                searchResultDiv.innerHTML = ''; 
+                searchResultDiv.style.fontFamily = 'IBM Plex Sans, sans-serif';
 
                 comics.forEach(function(comic) {
                     const comicTitle = comic.title;
@@ -29,6 +30,7 @@ fetch("https://gateway.marvel.com:443/v1/public/characters?name=Iron%20Man&apike
                     }
 
                     searchResultDiv.appendChild(comicDescriptionElement);
+
                 });
             })
             .catch(function(error) {
